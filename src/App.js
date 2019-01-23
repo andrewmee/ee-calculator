@@ -4,10 +4,72 @@ import Button from './Button';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      currentValue: null,
+      storedValue: null,
+      operation: null,
+    };
+    this.handleClick = this.handleClick.bind(this);
+    this.calculate = this.calculate.bind(this);
+  }
+
+  calculate() {
+    const { currentValue, storedValue, operation } = this.state;
+    let result = '';
+
+    switch (operation) {
+      case 'plus':
+        result = parseFloat(currentValue) + parseFloat(storedValue);
+        break;
+      default:
+        result = currentValue;
+    }
+
+    this.setState({
+      currentValue: result,
+      storedValue: null,
+      operation: null,
+    })
+  }
+
+  handleClick(value) {
+    const currentValue = this.state.currentValue || '';
+    switch (value) {
+      case 'clear':
+        this.setState({
+          currentValue: null,
+          storedValue: null,
+          operation: null,
+        });
+        break;
+      case 'equals':
+        this.calculate();
+        break;
+      case 'plus':
+        // TODO: if operation already stored, trigger a calculation
+        this.setState({
+          currentValue: '',
+          storedValue: currentValue,
+          operation: value,
+        });
+        break;
+      case '.':
+        if (currentValue.indexOf('.') >= 0) {
+          break;
+        }
+      default:
+        this.setState({
+          currentValue: `${currentValue}${value}`
+        });
+    }
+  }
+
   render() {
     return (
       <form className="calculator">
-        <input className="calculator__screen" readOnly value="5318008" />
+        <input className="calculator__screen" readOnly value={this.state.currentValue || 0} />
         <img src={logo} className="calculator__logo" alt="Equal Experts" />
         <Button onClick={this.handleClick} value="clear" type="operation" label={
             <abbr title="Clear">C</abbr>
