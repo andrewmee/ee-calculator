@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<button
+  className="calculator__button"
+  onClick={[Function]}
+/>
+`;
+
+exports[`renders correctly for operations 1`] = `
+<button
+  className="calculator__button calculator__button--operation calculator__button--foo"
+  onClick={[Function]}
+>
+  foo
+</button>
+`;

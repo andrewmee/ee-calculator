@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import Button from './Button';
 import './App.css';
 
 class App extends Component {
@@ -8,34 +9,34 @@ class App extends Component {
       <form className="calculator">
         <input className="calculator__screen" readOnly value="5318008" />
         <img src={logo} className="calculator__logo" alt="Equal Experts" />
-        <button className="calculator__button calculator__button--clear">
-          <abbr title="Clear">C</abbr>
-        </button>
+        <Button onClick={this.handleClick} value="clear" type="operation" label={
+            <abbr title="Clear">C</abbr>
+          } />
         <fieldset className="calculator__inputs">
-          <button className="calculator__button">8</button>
-          <button className="calculator__button">7</button>
-          <button className="calculator__button">9</button>
-          <button className="calculator__button calculator__button--operation">
+          <Button onClick={this.handleClick} value="8" />
+          <Button onClick={this.handleClick} value="7" />
+          <Button onClick={this.handleClick} value="9" />
+          <Button disabled value="divide" type="operation" label={
             <abbr title="Divide">&divide;</abbr>
-          </button>
-          <button className="calculator__button">4</button>
-          <button className="calculator__button">5</button>
-          <button className="calculator__button">6</button>
-          <button className="calculator__button calculator__button--operation">
+          } />
+          <Button onClick={this.handleClick} value="4" />
+          <Button onClick={this.handleClick} value="5" />
+          <Button onClick={this.handleClick} value="6" />
+          <Button disabled value="times" type="operation" label={
             <abbr title="Times">&times;</abbr>
-          </button>
-          <button className="calculator__button">1</button>
-          <button className="calculator__button">2</button>
-          <button className="calculator__button">3</button>
-          <button className="calculator__button calculator__button--operation">
+          } />
+          <Button onClick={this.handleClick} value="1" />
+          <Button onClick={this.handleClick} value="2" />
+          <Button onClick={this.handleClick} value="3" />
+          <Button disabled value="minus" type="operation" label={
             <abbr title="Minus">&minus;</abbr>
-          </button>
-          <button className="calculator__button">0</button>
-          <button className="calculator__button">.</button>
-          <button className="calculator__button" type="submit">=</button>
-          <button className="calculator__button calculator__button--operation">
+          } />
+          <Button onClick={this.handleClick} value="0" />
+          <Button onClick={this.handleClick} value="." />
+          <Button onClick={this.handleClick} value="equals" label="=" />
+          <Button onClick={this.handleClick} value="plus" type="operation" label={
             <abbr title="Plus">+</abbr>
-          </button>
+          } />
         </fieldset>
       </form>
     );
